@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Thiệp Mời Tốt Nghiệp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Lora', serif;
+      font-family: 'Times New Roman', serif;
       text-align: center;
       background: radial-gradient(circle, #ffe8f0, #fff6fb);
       overflow: hidden;
+      animation: fadeInBody 1.5s ease-in-out;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
@@ -24,16 +30,14 @@
     }
 
     @keyframes sparkle {
-      0% { box-shadow: 0 0 10px rgba(255, 192, 203, 0.3); }
+      0%, 100% { box-shadow: 0 0 10px rgba(255, 192, 203, 0.3); }
       50% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); }
-      100% { box-shadow: 0 0 10px rgba(255, 192, 203, 0.3); }
     }
 
-    .chibi {
-      width: 150px;
-      margin-bottom: 20px;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #ff69b4;
+    h1.name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      margin-top: 10px;
     }
 
     .hidden {
@@ -47,6 +51,19 @@
 
     .move {
       transition: transform 0.5s ease;
+    }
+
+    .fade-in-smooth {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: smoothFadeIn 1s forwards;
+    }
+
+    @keyframes smoothFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .btn {
@@ -73,24 +90,18 @@
       margin-top: 20px;
       font-size: 20px;
       color: #b22222;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <img src="https://i.imgur.com/Wj4Z8bS.png" alt="Chibi" class="chibi">
-    <h1 style="font-family: 'Great Vibes', cursive;">🎓 Thiệp Mời Tốt Nghiệp 🎓</h1>
-    <p>Để đánh dấu cột mốc quan trọng trong hành trình học tập, <strong>Lưu Linh Chi</strong> trân trọng mời bạn đến tham dự buổi lễ tốt nghiệp.</p>
+    <h1>🎓 Thiệp Mời Tốt Nghiệp 🎓</h1>
+    <h1 class="name">Lưu Linh Chi</h1>
+    <p>Trân trọng kính mời bạn đến tham dự buổi lễ tốt nghiệp để đánh dấu cột mốc quan trọng trong hành trình học tập.</p>
     <button class="btn yes" onclick="showInfo()">Đồng ý</button>
     <button id="noBtn" class="btn no" onclick="moveNo()">Không đồng ý</button>
 
-    <div id="info" class="info hidden">
+    <div id="info" class="info hidden fade-in-smooth">
       <p>Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn tại buổi lễ!</p>
       <p><strong>Thời gian:</strong> Chiều ngày 10/8/2025</p>
       <p><strong>Địa điểm:</strong> HT700, Học Viện Tài Chính, Số 58 Lê Văn Hiến, Phường Đức Thắng, Quận Bắc Từ Liêm, TP. Hà Nội</p>
@@ -102,9 +113,12 @@
 
     function showInfo() {
       document.querySelector('.yes').classList.add('hidden');
-      document.getElementById("noBtn").classList.add("fade-out");
-      setTimeout(() => document.getElementById("noBtn").style.display = "none", 1000);
-      document.getElementById("info").classList.remove("hidden");
+      const noBtn = document.getElementById("noBtn");
+      noBtn.classList.add("fade-out");
+      setTimeout(() => noBtn.style.display = "none", 1000);
+      const info = document.getElementById("info");
+      info.classList.remove("hidden");
+      info.classList.add("fade-in-smooth");
     }
 
     function moveNo() {
