@@ -34,10 +34,18 @@
       50% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); }
     }
 
+    h1.title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #b22222;
+      margin-bottom: 5px;
+    }
+
     h1.name {
       font-family: 'Great Vibes', cursive;
       font-size: 36px;
-      margin-top: 10px;
+      color: #d6336c;
+      margin-top: 5px;
     }
 
     .hidden {
@@ -91,18 +99,22 @@
       font-size: 20px;
       color: #b22222;
     }
+
+    .info strong {
+      color: #800000;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>🎓 Thiệp Mời Tốt Nghiệp 🎓</h1>
+    <h1 class="title">Thiệp Mời Tốt Nghiệp</h1>
     <h1 class="name">Lưu Linh Chi</h1>
     <p>Trân trọng kính mời bạn đến tham dự buổi lễ tốt nghiệp để đánh dấu cột mốc quan trọng trong hành trình học tập.</p>
     <button class="btn yes" onclick="showInfo()">Đồng ý</button>
     <button id="noBtn" class="btn no" onclick="moveNo()">Không đồng ý</button>
 
     <div id="info" class="info hidden fade-in-smooth">
-      <p>Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn tại buổi lễ!</p>
+      <p><strong>Cảm ơn bạn đã xác nhận tham dự!</strong></p>
       <p><strong>Thời gian:</strong> Chiều ngày 10/8/2025</p>
       <p><strong>Địa điểm:</strong> HT700, Học Viện Tài Chính, Số 58 Lê Văn Hiến, Phường Đức Thắng, Quận Bắc Từ Liêm, TP. Hà Nội</p>
     </div>
