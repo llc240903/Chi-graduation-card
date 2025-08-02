@@ -10,12 +10,6 @@
       text-align: center;
       background: radial-gradient(circle, #ffe8f0, #fff6fb);
       overflow: hidden;
-      animation: fadeInBody 1.5s ease-in-out;
-    }
-
-    @keyframes fadeInBody {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
@@ -25,27 +19,18 @@
       box-shadow: 0 0 20px rgba(255, 192, 203, 0.7);
       margin: 80px auto;
       max-width: 600px;
-      position: relative;
-      animation: sparkle 2s infinite;
+      animation: slideIn 1.5s ease;
     }
 
-    @keyframes sparkle {
-      0%, 100% { box-shadow: 0 0 10px rgba(255, 192, 203, 0.3); }
-      50% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.6); }
-    }
-
-    h1.title {
-      font-size: 30px;
-      font-weight: bold;
-      color: #b22222;
-      margin-bottom: 5px;
-    }
-
-    h1.name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 36px;
-      color: #d6336c;
-      margin-top: 5px;
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .hidden {
@@ -59,19 +44,6 @@
 
     .move {
       transition: transform 0.5s ease;
-    }
-
-    .fade-in-smooth {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: smoothFadeIn 1s forwards;
-    }
-
-    @keyframes smoothFadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .btn {
@@ -97,24 +69,37 @@
     .info {
       margin-top: 20px;
       font-size: 20px;
-      color: #b22222;
+      color: #8b0000;
+      animation: fadeIn 1.5s ease forwards;
     }
 
     .info strong {
-      color: #800000;
+      font-weight: bold;
+      color: #d40061;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #c2185b;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1 class="title">Thiệp Mời Tốt Nghiệp</h1>
-    <h1 class="name">Lưu Linh Chi</h1>
-    <p>Trân trọng kính mời bạn đến tham dự buổi lễ tốt nghiệp để đánh dấu cột mốc quan trọng trong hành trình học tập.</p>
+    <h1>🎓 Thiệp Mời Tốt Nghiệp 🎓</h1>
+    <p>Để đánh dấu cột mốc quan trọng trong hành trình học tập, <strong>Lưu Linh Chi</strong> trân trọng mời bạn đến tham dự buổi lễ tốt nghiệp.</p>
     <button class="btn yes" onclick="showInfo()">Đồng ý</button>
     <button id="noBtn" class="btn no" onclick="moveNo()">Không đồng ý</button>
 
-    <div id="info" class="info hidden fade-in-smooth">
-      <p><strong>Cảm ơn bạn đã xác nhận tham dự!</strong></p>
+    <div id="info" class="info hidden">
+      <p>Cảm ơn bạn đã xác nhận tham dự! Hẹn gặp bạn tại buổi lễ!</p>
       <p><strong>Thời gian:</strong> Chiều ngày 10/8/2025</p>
       <p><strong>Địa điểm:</strong> HT700, Học Viện Tài Chính, Số 58 Lê Văn Hiến, Phường Đức Thắng, Quận Bắc Từ Liêm, TP. Hà Nội</p>
     </div>
@@ -125,12 +110,7 @@
 
     function showInfo() {
       document.querySelector('.yes').classList.add('hidden');
-      const noBtn = document.getElementById("noBtn");
-      noBtn.classList.add("fade-out");
-      setTimeout(() => noBtn.style.display = "none", 1000);
-      const info = document.getElementById("info");
-      info.classList.remove("hidden");
-      info.classList.add("fade-in-smooth");
+      document.getElementById("info").classList.remove("hidden");
     }
 
     function moveNo() {
