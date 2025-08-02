@@ -11,25 +11,13 @@
       text-align: center;
       padding: 40px;
       color: #fff;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 3em;
       text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
-      margin-bottom: 10px;
-    }
-
-    img.chibi {
-      width: 200px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px #fff;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #fff; }
-      to { box-shadow: 0 0 30px #fff, 0 0 40px #ffde59; }
+      margin-bottom: 20px;
     }
 
     .sparkles {
@@ -39,11 +27,14 @@
       pointer-events: none;
       background: url('https://media.giphy.com/media/l0MYu5GbbWBX5VRlC/giphy.gif') center center no-repeat;
       background-size: cover;
-      opacity: 0.3;
+      opacity: 0.25;
+      z-index: 0;
     }
 
     .buttons {
       margin-top: 30px;
+      position: relative;
+      z-index: 1;
     }
 
     button {
@@ -65,7 +56,7 @@
     #no-button {
       background-color: #f44336;
       color: white;
-      position: relative;
+      position: absolute;
     }
 
     #details {
@@ -87,15 +78,13 @@
 
   <h1>🎓 Mời bạn đến dự lễ tốt nghiệp của mình nhé!</h1>
 
-  <img class="chibi" src="A_graduation_invitation_image_set_against_a_soft_p.png" alt="Chibi">
-
   <div class="buttons">
     <button id="yes-button" onclick="handleYes()">Đồng ý 💖</button>
     <button id="no-button" onclick="handleNo()">Không đồng ý 😢</button>
   </div>
 
   <div id="details">
-    <p>⏰ Thời gian: ngày 10/08/2025</p>
+    <p>⏰ Thời gian: 18h00, ngày 10/08/2025</p>
     <p>📍 Địa điểm: HT700 - Học Viện Tài Chính, Số 58 Lê Văn Hiến, phường Đức Thắng, quận Bắc Từ Liêm, TP. Hà Nội</p>
   </div>
 
@@ -108,4 +97,21 @@
     }
 
     function handleNo() {
-      const btn = document.getElementById("no-button")
+      const btn = document.getElementById("no-button");
+      attempts++;
+
+      if (attempts >= 3) {
+        btn.style.display = "none";
+        return;
+      }
+
+      const offsetX = (Math.random() * 200 - 100);
+      const offsetY = (Math.random() * 200 - 100);
+      const scale = 1 - attempts * 0.2;
+
+      btn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    }
+  </script>
+
+</body>
+</html>
