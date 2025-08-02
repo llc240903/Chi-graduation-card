@@ -19,16 +19,16 @@
       box-shadow: 0 0 20px rgba(255, 192, 203, 0.7);
       margin: 80px auto;
       max-width: 600px;
-      animation: slideIn 1.5s ease;
+      animation: scaleIn 1.5s ease forwards;
     }
 
-    @keyframes slideIn {
+    @keyframes scaleIn {
       from {
-        transform: translateY(-50px);
+        transform: scale(0.8);
         opacity: 0;
       }
       to {
-        transform: translateY(0);
+        transform: scale(1);
         opacity: 1;
       }
     }
@@ -94,7 +94,7 @@
 <body>
   <div class="card">
     <h1>🎓 Thiệp Mời Tốt Nghiệp 🎓</h1>
-    <p>Để đánh dấu cột mốc quan trọng trong hành trình học tập, <strong>Lưu Linh Chi</strong> trân trọng mời bạn đến tham dự buổi lễ tốt nghiệp.</p>
+    <p>Để đánh dấu cột mốc quan trọng trong hành trình học tập, <span style="font-family: 'Great Vibes', cursive;"><strong>Lưu Linh Chi</strong></span> trân trọng mời bạn đến tham dự buổi lễ tốt nghiệp.</p>
     <button class="btn yes" onclick="showInfo()">Đồng ý</button>
     <button id="noBtn" class="btn no" onclick="moveNo()">Không đồng ý</button>
 
@@ -110,6 +110,7 @@
 
     function showInfo() {
       document.querySelector('.yes').classList.add('hidden');
+      document.getElementById("noBtn").classList.add('hidden');
       document.getElementById("info").classList.remove("hidden");
     }
 
