@@ -18,6 +18,7 @@
       font-size: 3em;
       text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
       margin-bottom: 20px;
+      z-index: 1;
     }
 
     .sparkles {
@@ -27,13 +28,14 @@
       pointer-events: none;
       background: url('https://media.giphy.com/media/l0MYu5GbbWBX5VRlC/giphy.gif') center center no-repeat;
       background-size: cover;
-      opacity: 0.25;
+      opacity: 0.2;
       z-index: 0;
     }
 
     .buttons {
       margin-top: 30px;
       position: relative;
+      height: 200px;
       z-index: 1;
     }
 
@@ -46,17 +48,22 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: 'Pacifico', cursive;
+      position: relative;
     }
 
     #yes-button {
       background-color: #4CAF50;
       color: white;
+      z-index: 2;
     }
 
     #no-button {
       background-color: #f44336;
       color: white;
+      z-index: 2;
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     #details {
@@ -105,8 +112,8 @@
         return;
       }
 
-      const offsetX = (Math.random() * 200 - 100);
-      const offsetY = (Math.random() * 200 - 100);
+      const offsetX = Math.random() * 300 - 150;
+      const offsetY = Math.random() * 150 - 75;
       const scale = 1 - attempts * 0.2;
 
       btn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
